@@ -11,15 +11,18 @@ public class Spot : MonoBehaviour {
     public GameObject buildPanel; //the build pqanel
     public GameObject[] towers;                              // public GameObject[] towers; //Array of game objects
     public GameObject towerPlaced; //Placeholder
-  
+                                   // class objects
+
 
     void Start()
-    {
+    {   //set the class objects
+        
         ButtonScript = GameObject.Find("Canvas/Panel").GetComponent<buttonScript>(); //get a refference to the buttonscript u=in scen
     }
 
     public void buildTower(int tower)
     {
+        
         GameObject newTower = Instantiate(towers[tower], transform.position, Quaternion.identity) as GameObject;
     }
 
