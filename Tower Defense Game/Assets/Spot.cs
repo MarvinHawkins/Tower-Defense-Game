@@ -11,7 +11,7 @@ public class Spot : MonoBehaviour {
     public GameObject buildPanel; //the build pqanel
     public GameObject[] towers;                              // public GameObject[] towers; //Array of game objects
     public GameObject towerPlaced; //Placeholder
-                                   // class objects
+    public bool isSelected;                               // class objects
 
 
     void Start()
@@ -31,14 +31,17 @@ public class Spot : MonoBehaviour {
 
     //Check to see if you can place a tower
 
-
-
+     
     void OnMouseUp()
     {
+        //if (towerPlaced == null)
+        Debug.Log("spot  cicked");
         ButtonScript.selectedTower = this.gameObject; //set the tower to be the clicked object
-        //ButtonScript.towerPlaced = towerPlaced;
+                                                          //ButtonScript.towerPlaced = towerPlaced;
+        
+       
 
-    }
+    } 
 
 
 

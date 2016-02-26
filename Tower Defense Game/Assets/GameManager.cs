@@ -6,16 +6,17 @@ public class GameManager : MonoBehaviour {
 
     //variables
     public int playerMoney = 0; //hardcoded for now, but may set on start
-    public int lives = 20; //set the player;s lives will set dynamically
+    //public int lives = 20; //set the player;s lives will set dynamically
     public int wave; //Set the total number of waves 
 
 
     public Text waveLabel;   //label used to set the number of waves
     public Text goldLabel;
     public Text healthLabel;
+    public Text stats;
+
     public GameObject[] healthIndicator;
     public GameObject[] nextWaveLabels;
-
 
     public bool gameOver = false;
 
@@ -32,9 +33,7 @@ public class GameManager : MonoBehaviour {
             goldLabel.GetComponent<Text>().text = "Money: " + playerMoney;
         }
     }
-
-    
-   
+  
 
     
 
@@ -76,7 +75,7 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        Money = 100;
+        Money = 10000;
        // Wave = 0; // set wave initial wave to 0
         Health = 5;
 

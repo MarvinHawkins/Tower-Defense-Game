@@ -5,16 +5,20 @@ using System.Collections;
 
 public class buttonScript : MonoBehaviour {
 
-    public GameObject[] towers; //set up array of tower ooptions AVAIABLE TO THE PLAYER
+    public GameObject[] towers; //set up array of tower options AVAIABLE TO THE PLAYER
     public GameObject selectedTower; //assign the clicked gameobject
     public GameObject towerPlaced;
     public GameManager gameManager;  //Find the game manager class
+    public GameObject statPanel; //hold ref of the panel
+
 
 
 
     public void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        statPanel = GameObject.FindGameObjectWithTag("Stats");
+       // statPanel.SetActive(false);
     }
    
     public bool canPlaceTower()
@@ -36,8 +40,11 @@ public class buttonScript : MonoBehaviour {
             {
                 //deduct cost
                 GameObject newTower = Instantiate(towers[tower], selectedTower.transform.position, Quaternion.identity) as GameObject;
-                selectedTower.GetComponent<Spot>().towerPlaced = newTower; 
+                newTower.transform.SetParent(selectedTower.transform);
+                selectedTower.GetComponent<Spot>().towerPlaced = newTower;
                 gameManager.Money -= towers[tower].GetComponent<TowerData>().levels[0].cost;  //set the property which sets the actaul variable
+         
+
             }         
         
 

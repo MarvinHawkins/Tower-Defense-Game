@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Spot
+  - Tower
+  - Stats
+  - PlayerTowerManager
   layers:
   - Default
   - TransparentFX
@@ -14,8 +17,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Ground
+  - play field
   - 
   - 
   - 
@@ -39,6 +42,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: play
+    uniqueID: 850812993
+    locked: 0
+  - name: ground
+    uniqueID: 1894675357
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

@@ -7,8 +7,16 @@ public class TowerLevel
 {
     //Stores class and other info
     public int cost;
-    public GameObject visualization;
+    public GameObject visualization; //Container of how tower looks
     public GameObject projectile; //The projectile type used by the 
+    public float range; //how far casn the tower see?
+    public float timeSinceLastShot;
+    public float fireRate;
+
+
+
+
+
 }
 
 public class TowerData : MonoBehaviour {
