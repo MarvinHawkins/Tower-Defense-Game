@@ -25,9 +25,10 @@ public class GroundManager : MonoBehaviour {
     {
         if(ButtonScript.selectedTower != null)
         {
-            //Cannot click on ground unless something is clicked
+           
             Debug.Log("Ground clicked");
             selectManager.DeselectAll();
+            ButtonScript.selectedTower.GetComponent<Tower>().isSelected = false;
 
         }
        

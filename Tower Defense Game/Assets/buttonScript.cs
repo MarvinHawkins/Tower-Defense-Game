@@ -18,7 +18,7 @@ public class buttonScript : MonoBehaviour {
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         statPanel = GameObject.FindGameObjectWithTag("Stats");
-       // statPanel.SetActive(false);
+        statPanel.SetActive(false);
     }
    
     public bool canPlaceTower()

@@ -21,8 +21,7 @@ public class Tower : MonoBehaviour {
         ButtonScript = GameObject.Find("Canvas/Panel").GetComponent<buttonScript>(); //get a refference to the buttonscript u=in scen
         canvaStatsPanel = ButtonScript.statPanel; //Should send this unit's stats to the panel
 
-        //statsText = canvaStatsPanel.GetComponentInChildren<Text>().text;
-        statsLabel = canvaStatsPanel.GetComponentInChildren<Text>();
+       statsLabel = canvaStatsPanel.GetComponentInChildren<Text>();
 
         towerManager = GameObject.FindGameObjectWithTag("PlayerTowerManager").GetComponent<TowerManager>();
         selectionCircle = transform.Find("selectPlane");
@@ -37,21 +36,32 @@ public class Tower : MonoBehaviour {
 
         towerManager.selectSingleTower(gameObject);
         isSelected = true;
-
-        selectionCircle.gameObject.SetActive(true);
-
-        canvaStatsPanel.SetActive(true);
         ButtonScript.selectedTower = this.gameObject; //set the tower to be the clicked object
+                                                      // selectionCircle.gameObject.SetActive(true);
+                                                      //  canvaStatsPanel.SetActive(true);
+
 
         //tower stat manipulation stuff stuff
         //When the  tower is selected, show its stats      
 
-        statsLabel.GetComponent<Text>().text= "Tower Level" + gameObject.GetComponent<TowerData>().levels[0].cost;
+        statsLabel.GetComponent<Text>().text= "Tower Cost  " + gameObject.GetComponent<TowerData>().levels[0].cost;
 
     }
 
     void Update()
+
     {
+
+        if (isSelected == true)
+        {
+            selectionCircle.gameObject.SetActive(true);
+            canvaStatsPanel.SetActive(true);
+        }
+        else if (isSelected == false)
+        {
+            selectionCircle.gameObject.SetActive(false);
+            canvaStatsPanel.SetActive(false);
+        }
 
     }
 

@@ -90,6 +90,7 @@ MonoBehaviour:
   towerManager: {fileID: 0}
   selectionCircle: {fileID: 0}
   isSelected: 0
+  statsLabel: {fileID: 0}
 --- !u!114 &11480024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,6 +106,9 @@ MonoBehaviour:
   - cost: 200
     visualization: {fileID: 0}
     projectile: {fileID: 0}
+    range: 0
+    timeSinceLastShot: 0
+    fireRate: 0
 --- !u!212 &21216166
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -160,7 +164,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.3073281, g: 0.006866356, b: 0.9338235, a: 1}
   m_FlipX: 0
@@ -186,7 +190,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
