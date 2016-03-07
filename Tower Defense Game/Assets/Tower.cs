@@ -10,8 +10,7 @@ public class Tower : MonoBehaviour {
 
 
     public bool isSelected;
-    //public string statsText;
-    public Text statsLabel;
+     public Text statsLabel;
 
 
 
@@ -36,15 +35,17 @@ public class Tower : MonoBehaviour {
 
         towerManager.selectSingleTower(gameObject);
         isSelected = true;
-        ButtonScript.selectedTower = this.gameObject; //set the tower to be the clicked object
-                                                      // selectionCircle.gameObject.SetActive(true);
-                                                      //  canvaStatsPanel.SetActive(true);
+        ButtonScript.selectedTower = this.gameObject;
+        ButtonScript.currentSpot = gameObject.GetComponentInParent<Spot>().transform;
 
 
+        //set the tower to be the clicked object
+        // selectionCircle.gameObject.SetActive(true);
+        //  canvaStatsPanel.SetActive(true);
         //tower stat manipulation stuff stuff
         //When the  tower is selected, show its stats      
 
-        statsLabel.GetComponent<Text>().text= "Tower Cost  " + gameObject.GetComponent<TowerData>().levels[0].cost;
+        statsLabel.GetComponent<Text>().text= "Tower Cost  " + gameObject.GetComponent<TowerData>().cost;
 
     }
 

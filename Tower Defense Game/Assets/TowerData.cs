@@ -3,71 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 [System.Serializable]
 
-public class TowerLevel
-{
-    //Stores class and other info
-    public int cost;
-    public GameObject visualization; //Container of how tower looks
-    public GameObject projectile; //The projectile type used by the 
-    public float range; //how far casn the tower see?
-    public float timeSinceLastShot;
-    public float fireRate;
-
-
-
-
-
-}
 
 public class TowerData : MonoBehaviour {
 
-    public List<TowerLevel> levels;
-    private TowerLevel currentLevel;
-
-    void OnEnable()
-    {
-        CurrentLevel = levels[0];
-    }
-
-    public TowerLevel CurrentLevel
-    {
-        //2
-        get
-        {
-            return currentLevel;
-        }
-        //3
-        set
-        {
-            currentLevel = value;
-            int currentLevelIndex = levels.IndexOf(currentLevel);
-
-            GameObject levelVisualization = levels[currentLevelIndex].visualization;
-            for (int i = 0; i < levels.Count; i++)
-            {
-                if (levelVisualization != null)
-                {
-                    if (i == currentLevelIndex)
-                    {
-                        levels[i].visualization.SetActive(true);
-                    }
-                    else {
-                        levels[i].visualization.SetActive(false);
-                    }
-                }
-            }
-        }
-    }
+    //Stores class and other info
+    public int cost;
+    public float range; //how far casn the tower see?
+    public float timeSinceLastShot;
+    public float fireRate;
+    public int sellRate;  //Controls how much money the player getss at each level
+    public int upgradeRate; //Cost of the upgrade
+    public GameObject projectile; //The projectile type used by the 
+    public GameObject myUpgrade;
 
 
 
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
