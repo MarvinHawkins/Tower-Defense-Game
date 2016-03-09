@@ -8,6 +8,8 @@ TagManager:
   - Tower
   - Stats
   - PlayerTowerManager
+  - Projectile
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - 
   - Ground
   - play field
-  - 
+  - Projectile
   - 
   - 
   - 

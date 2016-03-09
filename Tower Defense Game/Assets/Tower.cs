@@ -10,7 +10,10 @@ public class Tower : MonoBehaviour {
 
 
     public bool isSelected;
-     public Text statsLabel;
+    public Text statsLabel;
+    // public Button[] upgradeButton;
+    
+    public Text upgradeLabel;
 
 
 
@@ -21,6 +24,11 @@ public class Tower : MonoBehaviour {
         canvaStatsPanel = ButtonScript.statPanel; //Should send this unit's stats to the panel
 
        statsLabel = canvaStatsPanel.GetComponentInChildren<Text>();
+       //upgradeButton = canvaStatsPanel.GetComponentsInChildren<Button>();
+
+       // upgradeButton = canvaStatsPanel.GetComponentInChildren<Button>();
+       // upgradeLabel = upgradeButton.GetComponentInChildren<Text>();
+
 
         towerManager = GameObject.FindGameObjectWithTag("PlayerTowerManager").GetComponent<TowerManager>();
         selectionCircle = transform.Find("selectPlane");
@@ -31,8 +39,7 @@ public class Tower : MonoBehaviour {
 
     void OnMouseUp()
     {
-        //Debug.Log("Tower clicked");
-
+ 
         towerManager.selectSingleTower(gameObject);
         isSelected = true;
         ButtonScript.selectedTower = this.gameObject;
@@ -40,13 +47,23 @@ public class Tower : MonoBehaviour {
 
 
         //set the tower to be the clicked object
-        // selectionCircle.gameObject.SetActive(true);
-        //  canvaStatsPanel.SetActive(true);
+
+
+
         //tower stat manipulation stuff stuff
-        //When the  tower is selected, show its stats      
+        //When the  tower is selected, show its stats 
 
-        statsLabel.GetComponent<Text>().text= "Tower Cost  " + gameObject.GetComponent<TowerData>().cost;
+        for (int i = 0; i < ButtonScript.upgradeButton.Length; i++)
+        {
+       
+            upgradeLabel.GetComponent<Text>().text = "Upgrade Cost  " + gameObject.GetComponent<TowerData>().upgradeRate;
 
+        }
+
+        statsLabel.GetComponent<Text>().text= "Upgrade Cost  " + gameObject.GetComponent<TowerData>().upgradeRate;
+      
+
+        //To do need to figure out how to grab specific child
     }
 
     void Update()

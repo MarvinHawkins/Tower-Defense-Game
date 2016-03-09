@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 //T his script handles the building of a tower on a click
 
@@ -17,6 +18,9 @@ public class buttonScript : MonoBehaviour {
     public GameObject statPanel; //hold ref of the panel
     public TowerData towerdata; //Ref of the tower script
 
+    public Button[] upgradeButton;
+    
+
 
 
 
@@ -24,9 +28,13 @@ public class buttonScript : MonoBehaviour {
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         statPanel = GameObject.FindGameObjectWithTag("Stats");
+
+        upgradeButton = statPanel.GetComponentsInChildren<Button>();
         statPanel.SetActive(false);
         towerdata = selectedTower.GetComponentInParent<Spot>().towerPlaced.GetComponent<TowerData>();
 
+
+       
     }
 
 
