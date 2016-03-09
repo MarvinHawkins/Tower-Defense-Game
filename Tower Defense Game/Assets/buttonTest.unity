@@ -787,7 +787,7 @@ GameObject:
   - 114: {fileID: 798820406}
   - 114: {fileID: 798820405}
   m_Layer: 5
-  m_Name: Button 4
+  m_Name: Button4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1760,7 +1760,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 441706, guid: 31d8ac1eb282fbe47b316dd7ae969241, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31d8ac1eb282fbe47b316dd7ae969241, type: 2}
@@ -1824,7 +1824,7 @@ Transform:
   m_LocalScale: {x: 400, y: 400, z: 400}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!61 &1901059014
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2062,6 +2062,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   statPanel: {fileID: 279746539}
   towerdata: {fileID: 0}
+  upgradeButton: []
 --- !u!1 &2089029208
 GameObject:
   m_ObjectHideFlags: 0

@@ -110,6 +110,12 @@ MonoBehaviour:
   selectionCircle: {fileID: 0}
   isSelected: 0
   statsLabel: {fileID: 0}
+  labels: {fileID: 0}
+  upgradeLabel: {fileID: 0}
+  buttonLabels:
+  - 
+  - 
+  - 
 --- !u!212 &21221492
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -177,6 +183,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: buttonLabels.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 1
