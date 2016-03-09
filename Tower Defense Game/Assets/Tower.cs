@@ -12,8 +12,9 @@ public class Tower : MonoBehaviour {
     public bool isSelected;
     public Text statsLabel;
     // public Button[] upgradeButton;
-    
+    public Text labels;
     public Text upgradeLabel;
+    public string[] buttonLabels;
 
 
 
@@ -27,7 +28,7 @@ public class Tower : MonoBehaviour {
        //upgradeButton = canvaStatsPanel.GetComponentsInChildren<Button>();
 
        // upgradeButton = canvaStatsPanel.GetComponentInChildren<Button>();
-       // upgradeLabel = upgradeButton.GetComponentInChildren<Text>();
+       upgradeLabel = ButtonScript.GetComponentInChildren<Text>();
 
 
         towerManager = GameObject.FindGameObjectWithTag("PlayerTowerManager").GetComponent<TowerManager>();
@@ -55,8 +56,11 @@ public class Tower : MonoBehaviour {
 
         for (int i = 0; i < ButtonScript.upgradeButton.Length; i++)
         {
-       
-            upgradeLabel.GetComponent<Text>().text = "Upgrade Cost  " + gameObject.GetComponent<TowerData>().upgradeRate;
+
+            //get text of each button in the array
+            buttonLabels[i] = ButtonScript.upgradeButton[i].GetComponentInChildren<Text>().text;
+            //upgradeLabel.GetComponent<Text>().text = "Upgrade Cost  " + gameObject.GetComponent<TowerData>().upgradeRate;
+
 
         }
 
