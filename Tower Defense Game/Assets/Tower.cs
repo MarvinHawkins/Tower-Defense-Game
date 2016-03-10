@@ -13,7 +13,9 @@ public class Tower : MonoBehaviour {
     public Text statsLabel;
     // public Button[] upgradeButton;
     public Text labels;
-    public Text upgradeLabel;
+
+
+  
     public string[] buttonLabels;
 
 
@@ -23,14 +25,7 @@ public class Tower : MonoBehaviour {
 
         ButtonScript = GameObject.Find("Canvas/Panel").GetComponent<buttonScript>(); //get a refference to the buttonscript u=in scen
         canvaStatsPanel = ButtonScript.statPanel; //Should send this unit's stats to the panel
-
        statsLabel = canvaStatsPanel.GetComponentInChildren<Text>();
-       //upgradeButton = canvaStatsPanel.GetComponentsInChildren<Button>();
-
-       // upgradeButton = canvaStatsPanel.GetComponentInChildren<Button>();
-       upgradeLabel = ButtonScript.GetComponentInChildren<Text>();
-
-
         towerManager = GameObject.FindGameObjectWithTag("PlayerTowerManager").GetComponent<TowerManager>();
         selectionCircle = transform.Find("selectPlane");
         selectionCircle.gameObject.SetActive(false);
@@ -40,40 +35,22 @@ public class Tower : MonoBehaviour {
 
     void OnMouseUp()
     {
- 
         towerManager.selectSingleTower(gameObject);
         isSelected = true;
         ButtonScript.selectedTower = this.gameObject;
         ButtonScript.currentSpot = gameObject.GetComponentInParent<Spot>().transform;
 
+        statsLabel.GetComponent<Text>().text = "Tower: " + gameObject.GetComponent<TowerData>().towerName;
 
-        //set the tower to be the clicked object
+        //get text of each button in the array
+        ButtonScript.upgradeButton[0].GetComponentInChildren<Text>().text = "Sell Tower: " + gameObject.GetComponent<TowerData>().sellRate;
+        ButtonScript.upgradeButton[1].GetComponentInChildren<Text>().text = "Upgrade Tower: " + gameObject.GetComponent<TowerData>().upgradeRate;
 
-
-
-        //tower stat manipulation stuff stuff
-        //When the  tower is selected, show its stats 
-
-        for (int i = 0; i < ButtonScript.upgradeButton.Length; i++)
-        {
-
-            //get text of each button in the array
-            buttonLabels[i] = ButtonScript.upgradeButton[i].GetComponentInChildren<Text>().text;
-            //upgradeLabel.GetComponent<Text>().text = "Upgrade Cost  " + gameObject.GetComponent<TowerData>().upgradeRate;
-
-
-        }
-
-        statsLabel.GetComponent<Text>().text= "Upgrade Cost  " + gameObject.GetComponent<TowerData>().upgradeRate;
-      
-
-        //To do need to figure out how to grab specific child
     }
 
     void Update()
 
     {
-
         if (isSelected == true)
         {
             selectionCircle.gameObject.SetActive(true);
@@ -86,9 +63,5 @@ public class Tower : MonoBehaviour {
         }
 
     }
-
-
-
-
 
 }

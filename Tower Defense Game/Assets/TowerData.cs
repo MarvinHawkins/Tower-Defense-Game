@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class TowerData : MonoBehaviour {
 
     //Stores class and other info
+    public string towerName;
     public int cost;
     public float range; //how far casn the tower see?
     public float timeSinceLastShot;
