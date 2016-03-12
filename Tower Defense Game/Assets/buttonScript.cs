@@ -9,31 +9,21 @@ public class buttonScript : MonoBehaviour {
     public GameObject[] towers; //set up array of tower options AVAIABLE TO THE PLAYER
     public GameObject selectedTower; //assign the clicked gameobject
     public GameObject towerPlaced;
-
     public Transform currentSpot; //Parent of placed tower
-
-
     //Classes
     public GameManager gameManager;  //Find the game manager class
     public GameObject statPanel; //hold ref of the panel
     public TowerData towerdata; //Ref of the tower script
-
     public Button[] upgradeButton;
     
-
-
-
 
     public void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         statPanel = GameObject.FindGameObjectWithTag("Stats");
-
         upgradeButton = statPanel.GetComponentsInChildren<Button>();
         statPanel.SetActive(false);
         towerdata = selectedTower.GetComponentInParent<Spot>().towerPlaced.GetComponent<TowerData>();
-
-
        
     }
 

@@ -85,7 +85,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80f38d6626c0644e93335f337f25dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  towerName: tower2
+  cost: 49
   range: 0
   timeSinceLastShot: 0
   fireRate: 0
@@ -176,7 +177,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: cost
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: towerName
+      value: tower2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131906}
