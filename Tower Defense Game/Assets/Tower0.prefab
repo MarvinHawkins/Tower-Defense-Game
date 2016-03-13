@@ -35,6 +35,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &178116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 462374}
+  m_Layer: 0
+  m_Name: muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &441706
 Transform:
   m_ObjectHideFlags: 1
@@ -42,11 +57,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.36, y: 1.053392, z: 0}
+  m_LocalPosition: {x: 2.952, y: 0.918525, z: 0}
   m_LocalScale: {x: 1.4931371, y: 1.4931371, z: 1.4931371}
   m_Children:
+  - {fileID: 462374}
   - {fileID: 473232}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &462374
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178116}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.052009597, y: -0.031, z: -0.002616136}
+  m_LocalScale: {x: 0.66973084, y: 0.66973084, z: 0.66973084}
+  m_Children: []
+  m_Father: {fileID: 441706}
   m_RootOrder: 0
 --- !u!4 &473232
 Transform:
@@ -59,7 +87,7 @@ Transform:
   m_LocalScale: {x: 2.6789234, y: 2.6789234, z: 2.6789234}
   m_Children: []
   m_Father: {fileID: 441706}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!61 &6190468
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -87,9 +115,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: Tower 1
   cost: 100
-  range: 0
+  range: 200
   timeSinceLastShot: 0
-  fireRate: 0
+  fireRate: 0.75
   sellRate: 75
   upgradeRate: 150
   projectile: {fileID: 160234, guid: 100daf46eb3b8c148b12f84a7a3e9208, type: 2}
@@ -112,6 +140,7 @@ MonoBehaviour:
   isSelected: 0
   statsLabel: {fileID: 0}
   enemiesInRange: []
+  muzzle: {fileID: 462374}
 --- !u!212 &21221492
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -202,6 +231,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Size.y
       value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireRate
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: range
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

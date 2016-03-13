@@ -88,8 +88,9 @@ public class Unit_Base : MonoBehaviour {
                 // 3.b 
                 Destroy(gameObject);
 
-            //Audio here
+                //Audio here
                 // TODO: deduct health
+                gameManager.Health -= 1;
             }
         }
 

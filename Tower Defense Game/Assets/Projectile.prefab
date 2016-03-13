@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 468592}
   - 212: {fileID: 21217136}
   - 60: {fileID: 6039428}
-  - 114: {fileID: 11473998}
+  - 114: {fileID: 11485446}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Projectile
@@ -53,7 +53,7 @@ PolygonCollider2D:
       - {x: 0.099999994, y: -0.074999996}
       - {x: 0.099999994, y: 0.055}
       - {x: 0.049999997, y: 0.099999994}
---- !u!114 &11473998
+--- !u!114 &11485446
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -61,10 +61,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 160234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2692165453a72d8438379bcab42fd0cc, type: 3}
+  m_Script: {fileID: 11500000, guid: 26fb85a34169bb44fbf66158ff91f2c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -1
+  speed: 10
+  damage: 0
+  target: {fileID: 0}
+  startPosition: {x: 0, y: 0, z: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
 --- !u!212 &21217136
 SpriteRenderer:
   m_ObjectHideFlags: 1

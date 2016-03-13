@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class GameManager : MonoBehaviour {
 
 
     //variables
     public int playerMoney = 0; //hardcoded for now, but may set on start
     //public int lives = 20; //set the player;s lives will set dynamically
-    public int wave; //Set the total number of waves 
-
-
+ 
     public Text waveLabel;   //label used to set the number of waves
     public Text goldLabel;
     public Text healthLabel;
@@ -53,21 +53,64 @@ public class GameManager : MonoBehaviour {
             if (health <= 0 && !gameOver)
             {
                 gameOver = true;
-                GameObject gameOverText = GameObject.FindGameObjectWithTag("GameOver");
-                gameOverText.GetComponent<Animator>().SetBool("gameOver", true);
+                //GameObject gameOverText = GameObject.FindGameObjectWithTag("GameOver");
+               // gameOverText.GetComponent<Animator>().SetBool("gameOver", true);
             }
-            // 4 
-            for (int i = 0; i < healthIndicator.Length; i++)
+           
+        }
+    }
+
+    private int wave;
+    public int Wave
+    {
+        get { return wave; }
+        set
+        {
+            wave = value;
+            if (!gameOver)
             {
-                if (i < Health)
+                for (int i = 0; i < nextWaveLabels.Length; i++)
                 {
-                    healthIndicator[i].SetActive(true);
+                    nextWaveLabels[i].GetComponent<Animator>().SetTrigger("nextWave");
+                    //To do add animation
                 }
-                else {
-                    healthIndicator[i].SetActive(false);
-                }
+            }
+            waveLabel.text = "WAVE: " + (wave + 1);
+        }
+    }
+
+    void Update()
+    {
+        if (gameOver)
+        {
+            if (health <= 0)
+            {
+                GameLoss();
+            }
+            else
+            {
+                GameWin();
             }
         }
+    }
+
+    void GameWin()
+    {
+
+        Debug.Log("You Won!!!");
+        //Load the new level
+        //To Do Show animation of win
+        SceneManager.LoadScene(0);
+        
+    }
+
+    void GameLoss()
+    {
+        Debug.Log("You Lost!!!");
+        //To Do Show animation of loss
+        SceneManager.LoadScene(0);
+        //Player Loses The game
+
     }
 
 
@@ -76,8 +119,8 @@ public class GameManager : MonoBehaviour {
     void Start()
     {
         Money = 10000;
-       // Wave = 0; // set wave initial wave to 0
-        Health = 5;
+        Wave = 0; // set wave initial wave to 0
+        Health = 10;
 
     }
 }

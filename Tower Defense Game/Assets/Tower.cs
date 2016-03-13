@@ -14,10 +14,12 @@ public class Tower : MonoBehaviour {
     public Text statsLabel;
     private float lastShotTime;
     public List<GameObject> enemiesInRange;
+    public Transform muzzle;
 
 
     void Start()
-    {   //set the class objects
+    {   
+        //set the class objects
         ButtonScript = GameObject.Find("Canvas/Panel").GetComponent<buttonScript>(); //get a refference to the buttonscript u=in scen
         canvaStatsPanel = ButtonScript.statPanel; //Should send this unit's stats to the panel
        statsLabel = canvaStatsPanel.GetComponentInChildren<Text>();
@@ -76,7 +78,26 @@ public class Tower : MonoBehaviour {
 
     void Shoot(Collider2D target)
     {
-       GameObject newprojectile = Instantiate(towerData.projectile, transform.position, Quaternion.identity) as GameObject;
+       GameObject newprojectile = Instantiate(towerData.projectile, muzzle.transform.position, Quaternion.identity) as GameObject;
+
+        //Alternat shoot
+        GameObject bulletPrefab = towerData.projectile;
+        // 1 
+        Vector3 startPosition = gameObject.transform.position;
+        Vector3 targetPosition = target.transform.position;
+
+        startPosition.z = bulletPrefab.transform.position.z;
+        targetPosition.z = bulletPrefab.transform.position.z;
+
+        // 2 
+        GameObject newBullet = (GameObject)Instantiate(bulletPrefab);
+        newBullet.transform.position = startPosition;
+        BulletBehavior bulletComp = newBullet.GetComponent<BulletBehavior>();
+        bulletComp.target = target.gameObject;
+        bulletComp.startPosition = startPosition;
+        bulletComp.targetPosition = targetPosition;
+        
+
 
     }
 
