@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 
@@ -32,10 +33,17 @@ public class Unit_Base : MonoBehaviour {
     {
         if (other.gameObject.tag.Equals("Projectile"))
         {
+            int damage = other.gameObject.GetComponent<BulletBehavior>().damage;
             Destroy(other.gameObject);
-            if(health > 0)
+
+            Transform healthBarTransform = gameObject.transform.FindChild("HealthBar");
+            HealthBar healthBar =
+                healthBarTransform.gameObject.GetComponent<HealthBar>();
+            healthBar.currentHealth -= Mathf.Max(damage, 0);
+
+            if (health > 0)
             {
-                health -= 10;
+                health -= damage;
                 gameManager.Money += bounty; 
                 Debug.Log("ouch");
             }
@@ -65,6 +73,7 @@ public class Unit_Base : MonoBehaviour {
 
     public void Update()
     {
+
      
         Vector3 startPosition = waypoints[currentWaypoint].transform.position;
         Vector3 endPosition = waypoints[currentWaypoint + 1].transform.position;

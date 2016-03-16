@@ -78,7 +78,6 @@ public class Tower : MonoBehaviour {
 
     void Shoot(Collider2D target)
     {
-       GameObject newprojectile = Instantiate(towerData.projectile, muzzle.transform.position, Quaternion.identity) as GameObject;
 
         //Alternat shoot
         GameObject bulletPrefab = towerData.projectile;
@@ -97,8 +96,6 @@ public class Tower : MonoBehaviour {
         bulletComp.startPosition = startPosition;
         bulletComp.targetPosition = targetPosition;
         
-
-
     }
 
 

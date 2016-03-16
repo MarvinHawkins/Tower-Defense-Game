@@ -4,7 +4,7 @@ using System.Collections;
 [System.Serializable]
 public class Wave
 {
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefab;
     public float spawnInterval = 2;
     public int maxEnemies = 20;
 }
@@ -12,15 +12,15 @@ public class Wave
 public class SpawnEnemy : MonoBehaviour {
 
     public GameObject[] waypoints;
-    public GameObject testEnemyPrefab;
-
     public Wave[] waves;
     public int timeBetweenWaves = 5;
+    private float lastSpawnTime;
+    private int enemiesSpawned = 0;
+
 
     public GameManager gameManager;  //Find the game manager class
 
-    private float lastSpawnTime;
-    private int enemiesSpawned = 0;
+ 
 
     // Use this for initialization
     void Start () {
@@ -38,7 +38,7 @@ public class SpawnEnemy : MonoBehaviour {
 
         // 1
         int currentWave = gameManager.Wave;
-        //Check to make sure waves are left
+        //Check to make sure enemies are left
             if (currentWave < waves.Length)
             {
                 // 2
@@ -48,13 +48,19 @@ public class SpawnEnemy : MonoBehaviour {
                      timeInterval > spawnInterval) &&
                     enemiesSpawned < waves[currentWave].maxEnemies)
                 {
-                    // 3  
-                    lastSpawnTime = Time.time;
+                // 3  
+                lastSpawnTime = Time.time;
+
+               
+                   
                     GameObject newEnemy = (GameObject)
-                        Instantiate(waves[currentWave].enemyPrefab);
+                        Instantiate(waves[currentWave].enemyPrefab[Random.Range(0,waves[currentWave].enemyPrefab.Length)]);
                     newEnemy.GetComponent<Unit_Base>().waypoints = waypoints;
-                    enemiesSpawned++;
-                }
+                  
+               
+                enemiesSpawned++;
+
+            }
                 // Check to see if the last enemeis have been spawned in current wave
                 //If they have,  
                 if (enemiesSpawned == waves[currentWave].maxEnemies &&

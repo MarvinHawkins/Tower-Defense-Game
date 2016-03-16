@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour {
     {
         Money = 10000;
         Wave = 0; // set wave initial wave to 0
-        Health = 10;
+        Health = 20;
 
     }
 }
