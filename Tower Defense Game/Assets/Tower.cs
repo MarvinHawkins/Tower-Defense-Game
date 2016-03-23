@@ -20,9 +20,9 @@ public class Tower : MonoBehaviour {
     void Start()
     {   
         //set the class objects
-        ButtonScript = GameObject.Find("Canvas/Panel").GetComponent<buttonScript>(); //get a refference to the buttonscript u=in scen
+         
         canvaStatsPanel = ButtonScript.statPanel; //Should send this unit's stats to the panel
-       statsLabel = canvaStatsPanel.GetComponentInChildren<Text>();
+        statsLabel = canvaStatsPanel.GetComponentInChildren<Text>();
         towerManager = GameObject.FindGameObjectWithTag("PlayerTowerManager").GetComponent<TowerManager>();
         selectionCircle = transform.Find("selectPlane");
         selectionCircle.gameObject.SetActive(false);

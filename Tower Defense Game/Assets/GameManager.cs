@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -8,20 +9,29 @@ public class GameManager : MonoBehaviour {
 
     //variables
     public int playerMoney = 0; //hardcoded for now, but may set on start
-    //public int lives = 20; //set the player;s lives will set dynamically
+    public int playerScore = 0;
+    public int towerScore = 0; //use to get the 
  
     public Text waveLabel;   //label used to set the number of waves
     public Text goldLabel;
     public Text healthLabel;
     public Text stats;
 
+    public List<GameObject> builtTowers;
+    
+
     public GameObject[] healthIndicator;
     public GameObject[] nextWaveLabels;
 
     public bool gameOver = false;
+    public bool isWin = false;
+    public bool isLose = false;
+    public buttonScript ButtonScript;
+    public GameObject canvasWinPanel;
 
 
    
+
     //property of the money object
     public int Money
     {
@@ -85,23 +95,31 @@ public class GameManager : MonoBehaviour {
         {
             if (health <= 0)
             {
-                GameLoss();
+                isLose = true;
             }
             else
             {
+              
                 GameWin();
             }
         }
     }
 
+   
     void GameWin()
     {
-
         Debug.Log("You Won!!!");
-        //Load the new level
-        //To Do Show animation of win
-        SceneManager.LoadScene(0);
-        
+        canvasWinPanel.SetActive(true);
+        // playerScore = towerScore;   
+
+        //Do calculations
+
+
+        playerScore = (playerMoney * 1000) + (health*1000)+(towerScore*1);
+            
+            //Load the new level
+            //To Do Show animation of win
+            // SceneManager.LoadScene(0);
     }
 
     void GameLoss()
@@ -113,14 +131,18 @@ public class GameManager : MonoBehaviour {
 
     }
 
-
-
     // Use this for initialization
     void Start()
     {
-        Money = 10000;
+        Money = 1000;
         Wave = 0; // set wave initial wave to 0
         Health = 20;
 
+        ButtonScript = GameObject.Find("Canvas/Panel").GetComponent<buttonScript>(); //get a refference to the buttonscript u=in scen
+        canvasWinPanel = ButtonScript.winPanel; //Should send this unit's stats to the panel
+
     }
+
+
+
 }
