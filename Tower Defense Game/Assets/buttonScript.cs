@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 //T his script handles the building of a tower on a click
 
@@ -13,6 +14,7 @@ public class buttonScript : MonoBehaviour {
     //Classes
     public GameManager gameManager;  //Find the game manager class
     public GameObject statPanel; //hold ref of the panel
+    public GameObject winPanel;
     public TowerData towerdata; //Ref of the tower script
     public Button[] upgradeButton;
     
@@ -23,6 +25,7 @@ public class buttonScript : MonoBehaviour {
         statPanel = GameObject.FindGameObjectWithTag("Stats");
         upgradeButton = statPanel.GetComponentsInChildren<Button>();
         statPanel.SetActive(false);
+        winPanel.SetActive(false);
         towerdata = selectedTower.GetComponentInParent<Spot>().towerPlaced.GetComponent<TowerData>();
        
     }
@@ -53,7 +56,8 @@ public class buttonScript : MonoBehaviour {
                 newTower.transform.SetParent(selectedTower.transform);
                 selectedTower.GetComponent<Spot>().towerPlaced = newTower;  //Set the open spot to the  tower selected by the player
                 gameManager.Money -= towers[tower].GetComponent<TowerData>().cost;  //set the property which sets the actaul variable
-      
+                gameManager.towerScore += towers[tower].GetComponent<TowerData>().sellRate;
+
             }         
         }
         else
@@ -80,6 +84,7 @@ public class buttonScript : MonoBehaviour {
             //Return a certain amount of money to the player
             gameManager.Money += selectedTower.GetComponentInParent<Spot>().towerPlaced.GetComponent<TowerData>().sellRate; //Sell the tower for the same cost
 
+
         }
 
        }
@@ -93,6 +98,8 @@ public class buttonScript : MonoBehaviour {
             //Get parent spot first
             GameObject nextTower = Instantiate(selectedTower.GetComponentInParent<Spot>().towerPlaced.GetComponent<TowerData>().myUpgrade, selectedTower.transform.position, Quaternion.identity) as GameObject;     
             nextTower.transform.SetParent(currentSpot.transform);
+            gameManager.towerScore -= selectedTower.GetComponentInParent<Spot>().towerPlaced.GetComponent<TowerData>().sellRate; //Remove the current towers sell rate
+            gameManager.towerScore += selectedTower.GetComponentInParent<Spot>().towerPlaced.GetComponent<TowerData>().myUpgrade.GetComponent<TowerData>().sellRate;
             gameManager.Money -= selectedTower.GetComponentInParent<Spot>().towerPlaced.GetComponent<TowerData>().upgradeRate; //Sell the tower for the same cost
             //make the upgraded tower the tower in the spot
             selectedTower.GetComponentInParent<Spot>().towerPlaced = nextTower;
@@ -102,5 +109,13 @@ public class buttonScript : MonoBehaviour {
         }
 
     }
+
+    //Other Button Script stuff
+    public void playAgain()
+    {
+
+        SceneManager.LoadScene(0);
+    }
+
 
 }

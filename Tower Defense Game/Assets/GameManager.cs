@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     public Text waveLabel;   //label used to set the number of waves
     public Text goldLabel;
     public Text healthLabel;
+    public Text scoreLabel;
     public Text stats;
 
     public GameObject[] healthIndicator;
@@ -100,12 +101,15 @@ public class GameManager : MonoBehaviour {
 
     void GameWin()
     {
-        playerScore = (playerMoney * 1000) + (health * 1000) + (towerScore * 1);
 
+       
+        playerScore = (playerMoney * 1) + (health * 10) + (towerScore * 1);
+        scoreLabel.GetComponent<Text>().text = "Your Score: " + playerScore;
+        canvasWinPanel.SetActive(true);
         Debug.Log("You Won!!!");
         //Load the new level
         //To Do Show animation of win
-       // SceneManager.LoadScene(0);
+       
         
     }
 
