@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour {
 
     //variables
     public int playerMoney = 0; //hardcoded for now, but may set on start
-    //public int lives = 20; //set the player;s lives will set dynamically
- 
+    public int playerScore = 0;
+    public int towerScore = 0; //use to get the 
+
     public Text waveLabel;   //label used to set the number of waves
     public Text goldLabel;
     public Text healthLabel;
@@ -18,7 +19,10 @@ public class GameManager : MonoBehaviour {
     public GameObject[] healthIndicator;
     public GameObject[] nextWaveLabels;
 
-    public bool gameOver = false;
+    public buttonScript ButtonScript;
+    public GameObject canvasWinPanel;
+
+    public bool gameOver = false;   
 
 
    
@@ -96,11 +100,12 @@ public class GameManager : MonoBehaviour {
 
     void GameWin()
     {
+        playerScore = (playerMoney * 1000) + (health * 1000) + (towerScore * 1);
 
         Debug.Log("You Won!!!");
         //Load the new level
         //To Do Show animation of win
-        SceneManager.LoadScene(0);
+       // SceneManager.LoadScene(0);
         
     }
 
