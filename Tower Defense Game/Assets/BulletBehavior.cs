@@ -24,7 +24,9 @@ public class BulletBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-       float timeInterval = Time.time - startTime;
+       
+
+            float timeInterval = Time.time - startTime;
         gameObject.transform.position = Vector3.Lerp(startPosition, targetPosition, timeInterval * speed / distance);     
 
     }
