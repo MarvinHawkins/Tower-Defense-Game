@@ -10,6 +10,7 @@ TagManager:
   - PlayerTowerManager
   - Projectile
   - Enemy
+  - Build
   layers:
   - Default
   - TransparentFX

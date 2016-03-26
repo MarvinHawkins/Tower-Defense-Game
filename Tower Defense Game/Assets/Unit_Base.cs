@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿    using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -44,12 +44,12 @@ public class Unit_Base : MonoBehaviour {
             if (health > 0)
             {
                 health -= damage;
-                gameManager.Money += bounty; 
                 Debug.Log("ouch");
             }
             else
             {
                 Destroy(gameObject);
+                gameManager.Money += bounty;
             }        
             
         }
@@ -94,11 +94,11 @@ public class Unit_Base : MonoBehaviour {
                 // TODO: Rotate into move direction
             }
             else {
-                // 3.b 
                 Destroy(gameObject);
 
                 //Audio here
-                // TODO: deduct health
+                
+                //deduct health
                 gameManager.Health -= 1;
             }
         }

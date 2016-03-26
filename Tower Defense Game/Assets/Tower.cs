@@ -105,6 +105,7 @@ public class Tower : MonoBehaviour {
         {
             selectionCircle.gameObject.SetActive(true);
             canvaStatsPanel.SetActive(true);
+
         }
         else if (isSelected == false)
         {

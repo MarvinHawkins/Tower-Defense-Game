@@ -11,17 +11,21 @@ public class GameManager : MonoBehaviour {
     public int playerScore = 0;
     public int towerScore = 0; //use to get the 
 
+    public int highScore = 0;
+    public string highScoreKey = "HighScore"; 
+
     public Text waveLabel;   //label used to set the number of waves
     public Text goldLabel;
     public Text healthLabel;
     public Text scoreLabel;
+    public Text hiScoreLabel;
+    public Text endGameLabel;
     public Text stats;
 
-    public GameObject[] healthIndicator;
-    public GameObject[] nextWaveLabels;
+   public GameObject nextWaveLabels;
 
-    public buttonScript ButtonScript;
-    public GameObject canvasWinPanel;
+   public buttonScript ButtonScript;
+   public GameObject canvasWinPanel;
 
     public bool gameOver = false;   
 
@@ -39,9 +43,6 @@ public class GameManager : MonoBehaviour {
         }
     }
   
-
-    
-
     private int health;
     public int Health
     {
@@ -74,62 +75,72 @@ public class GameManager : MonoBehaviour {
             wave = value;
             if (!gameOver)
             {
-                for (int i = 0; i < nextWaveLabels.Length; i++)
-                {
-                    nextWaveLabels[i].GetComponent<Animator>().SetTrigger("nextWave");
-                    //To do add animation
-                }
+                //Play animation
+                nextWaveLabels.GetComponent<Animator>().SetTrigger("NextWave");
+                  
             }
             waveLabel.text = "WAVE: " + (wave + 1);
         }
     }
 
-    void Update()
+    //Assign the player a score based on money left, health left and value of towers
+    public void calcScore()
     {
-        if (gameOver)
+        //If our scoree is greter than highscore, set new higscore and save.
+        if (playerScore > highScore)
         {
-            if (health <= 0)
-            {
-                GameLoss();
-            }
-            else
-            {
-                GameWin();
-            }
+            PlayerPrefs.SetInt(highScoreKey, playerScore);
+            PlayerPrefs.Save();
         }
+        playerScore = (playerMoney * 1) + (health * 10) + (towerScore * 1);
+        scoreLabel.GetComponent<Text>().text = "Your Score: " + playerScore;
+        hiScoreLabel.GetComponent<Text>().text = "High Score: " + highScore;
+
     }
+
+    void Update()
+        {
+            if (gameOver)
+                {
+                    calcScore();
+                    canvasWinPanel.SetActive(true);
+
+                    if (health <= 0)
+                        {
+                            GameLoss();
+                        }
+                   else
+                        {
+                            GameWin();
+                        }
+                }
+        }
 
     void GameWin()
     {
 
-       
-        playerScore = (playerMoney * 1) + (health * 10) + (towerScore * 1);
-        scoreLabel.GetComponent<Text>().text = "Your Score: " + playerScore;
-        canvasWinPanel.SetActive(true);
+        endGameLabel.GetComponent<Text>().text = "You Won! ";
         Debug.Log("You Won!!!");
         //Load the new level
-        //To Do Show animation of win
-       
-        
+         
     }
 
     void GameLoss()
-    {
-        Debug.Log("You Lost!!!");
-        //To Do Show animation of loss
-        SceneManager.LoadScene(0);
-        //Player Loses The game
-
-    }
-
-
+        {
+            endGameLabel.GetComponent<Text>().text = "You Lost! ";
+            Debug.Log("You Lost!!!");
+            //To Do Show animation of loss
+        }
 
     // Use this for initialization
     void Start()
     {
         Money = 10000;
         Wave = 0; // set wave initial wave to 0
-        Health = 20;
+        Health = 3;
+        //Get the highScore from player prefs if it is there, 0 otherwise.
+        highScore = PlayerPrefs.GetInt(highScoreKey, 0);
+
 
     }
 }

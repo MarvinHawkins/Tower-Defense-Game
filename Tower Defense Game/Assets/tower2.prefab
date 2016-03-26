@@ -91,6 +91,8 @@ MonoBehaviour:
   selectionCircle: {fileID: 0}
   isSelected: 0
   statsLabel: {fileID: 0}
+  enemiesInRange: []
+  muzzle: {fileID: 0}
 --- !u!114 &11480024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,24 +104,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80f38d6626c0644e93335f337f25dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels:
-  - cost: 200
-    visualization: {fileID: 0}
-    projectile: {fileID: 0}
-    range: 0
-    timeSinceLastShot: 0
-    fireRate: 0
-    sellRate: 100
-    upgradeRate: 0
-  currentLevel:
-    cost: 0
-    visualization: {fileID: 0}
-    projectile: {fileID: 0}
-    range: 0
-    timeSinceLastShot: 0
-    fireRate: 0
-    sellRate: 0
-    upgradeRate: 0
+  towerName: 
+  cost: 0
+  range: 0
+  timeSinceLastShot: 0
+  fireRate: 0
+  sellRate: 0
+  upgradeRate: 0
+  projectile: {fileID: 0}
+  myUpgrade: {fileID: 0}
 --- !u!212 &21216166
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -160,7 +153,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: d3ef4827bdccc9e459f6f322c59724c6, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -207,6 +200,10 @@ Prefab:
       propertyPath: levels.Array.data[0].sellRate
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d3ef4827bdccc9e459f6f322c59724c6, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131990}

@@ -13,24 +13,23 @@ public class Spot : MonoBehaviour {
     public bool isSelected;  // class objects
 
     void Start()
-    {   //set the class objects
-         ButtonScript = GameObject.Find("Canvas/Panel").GetComponent<buttonScript>(); //get a refference to the buttonscript u=in scen
-    }
+        {   //set the class objects
+             ButtonScript = GameObject.Find("Canvas/Panel").GetComponent<buttonScript>(); //get a refference to the buttonscript u=in scen
+        }
 
     public void buildTower(int tower)
-    {        
-        GameObject newTower = Instantiate(towers[tower], transform.position, Quaternion.identity) as GameObject;
-    }
+        {        
+           GameObject newTower = Instantiate(towers[tower], transform.position, Quaternion.identity) as GameObject;
+        }
 
     
     void OnMouseUp()
-    {
-        //Check to see if you can place a tower
-        //if (towerPlaced == null)
-        Debug.Log("spot  cicked");
-        ButtonScript.selectedTower = this.gameObject; //set the tower to be the clicked object
-       //ButtonScript.towerPlaced = towerPlaced;
-
+        {
+            //Check to see if you can place a tower
+            Debug.Log("spot  cicked");
+            ButtonScript.buildOptionsPanel.SetActive(true);
+            ButtonScript.selectedTower = this.gameObject; //set the tower to be the clicked object
+            
     } 
 
 }

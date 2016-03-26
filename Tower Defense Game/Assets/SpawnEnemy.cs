@@ -5,38 +5,30 @@ using System.Collections;
 public class Wave
 {
     public GameObject[] enemyPrefab;
+    public GameObject[] waypoints;
     public float spawnInterval = 2;
     public int maxEnemies = 20;
 }
 
 public class SpawnEnemy : MonoBehaviour {
 
-    public GameObject[] waypoints;
+    
     public Wave[] waves;
     public int timeBetweenWaves = 5;
     private float lastSpawnTime;
     private int enemiesSpawned = 0;
 
-
     public GameManager gameManager;  //Find the game manager class
-
- 
-
     // Use this for initialization
-    void Start () {
-       // Instantiate(testEnemyPrefab).GetComponent<Unit_Base>().waypoints = waypoints;
+    void Start ()
+    {
         lastSpawnTime = Time.time;
-
-        gameManager =
-    GameObject.Find("GameManager").GetComponent<GameManager>();
-
-
+       gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void Update()
     {
 
-        // 1
         int currentWave = gameManager.Wave;
         //Check to make sure enemies are left
             if (currentWave < waves.Length)
@@ -48,17 +40,11 @@ public class SpawnEnemy : MonoBehaviour {
                      timeInterval > spawnInterval) &&
                     enemiesSpawned < waves[currentWave].maxEnemies)
                 {
-                // 3  
+             
                 lastSpawnTime = Time.time;
-
-               
-                   
-                    GameObject newEnemy = (GameObject)
-                        Instantiate(waves[currentWave].enemyPrefab[Random.Range(0,waves[currentWave].enemyPrefab.Length)]);
-                    newEnemy.GetComponent<Unit_Base>().waypoints = waypoints;
-                  
-               
-                enemiesSpawned++;
+                  GameObject newEnemy = (GameObject)Instantiate(waves[currentWave].enemyPrefab[Random.Range(0,waves[currentWave].enemyPrefab.Length)]); //Spawn a random enemy
+                  newEnemy.GetComponent<Unit_Base>().waypoints = waves[currentWave].waypoints;
+                  enemiesSpawned++;
 
             }
                 // Check to see if the last enemeis have been spawned in current wave
@@ -66,7 +52,7 @@ public class SpawnEnemy : MonoBehaviour {
                 if (enemiesSpawned == waves[currentWave].maxEnemies &&
                     GameObject.FindGameObjectWithTag("Enemy") == null)
                 {
-                    gameManager.Wave++;
+                    gameManager.Wave++; //increase to wave
                    //gameManager.Gold = Mathf.RoundToInt(gameManager.Gold * 1.1f);
                     enemiesSpawned = 0;
                     lastSpawnTime = Time.time;
