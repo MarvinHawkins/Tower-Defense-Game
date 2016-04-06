@@ -16,7 +16,7 @@ public class buttonScript : MonoBehaviour {
     public GameObject statPanel; //hold ref of the panel
     public GameObject winPanel;
     public GameObject buildOptionsPanel;
-
+    
     public TowerData towerdata; //Ref of the tower script
     public Button[] upgradeButton;
 
@@ -64,7 +64,6 @@ public class buttonScript : MonoBehaviour {
                 gameManager.towerScore += towers[tower].GetComponent<TowerData>().sellRate;
                 buildOptionsPanel.SetActive(false);//Close the tower menu
                 selectedTower.GetComponent<BoxCollider2D>().enabled = false;
-
 
             }         
         }

@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour {
     {
         get { return health; }
 
-        // Study this more
         set
         {
             
@@ -137,7 +136,7 @@ public class GameManager : MonoBehaviour {
     {
         Money = 10000;
         Wave = 0; // set wave initial wave to 0
-        Health = 3;
+        Health = 300;
         //Get the highScore from player prefs if it is there, 0 otherwise.
         highScore = PlayerPrefs.GetInt(highScoreKey, 0);
 

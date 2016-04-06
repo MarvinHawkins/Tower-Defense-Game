@@ -16,13 +16,12 @@ public class Tower : MonoBehaviour {
     public List<GameObject> enemiesInRange;
     public Transform muzzle;
 
-
     void Start()
     {   
         //set the class objects
         ButtonScript = GameObject.Find("Canvas/Panel").GetComponent<buttonScript>(); //get a refference to the buttonscript u=in scen
         canvaStatsPanel = ButtonScript.statPanel; //Should send this unit's stats to the panel
-       statsLabel = canvaStatsPanel.GetComponentInChildren<Text>();
+        statsLabel = canvaStatsPanel.GetComponentInChildren<Text>();
         towerManager = GameObject.FindGameObjectWithTag("PlayerTowerManager").GetComponent<TowerManager>();
         selectionCircle = transform.Find("selectPlane");
         selectionCircle.gameObject.SetActive(false);
@@ -33,8 +32,7 @@ public class Tower : MonoBehaviour {
 
     }
 
-
-    // 1
+    // Check for enemies in range
     void OnEnemyDestroy(GameObject enemy)
     {
         enemiesInRange.Remove(enemy);
@@ -66,20 +64,29 @@ public class Tower : MonoBehaviour {
     
     void OnMouseUp()
     {
-        towerManager.selectSingleTower(gameObject);
-        isSelected = true;
-        ButtonScript.selectedTower = this.gameObject;
+
+        //set the clicked to true
+        // isSelected = true;
+        //replaced by selection manager
+         towerManager.selectSingleTower(gameObject);
+        //show the towers options
+        canvaStatsPanel.SetActive(true);
+        ButtonScript.buildOptionsPanel.SetActive(false);
+        ButtonScript.selectedTower = this.gameObject;      
         ButtonScript.currentSpot = gameObject.GetComponentInParent<Spot>().transform;
+        //Set the name of the selected tower
         statsLabel.GetComponent<Text>().text = "Tower: " + gameObject.GetComponent<TowerData>().towerName;
+       
         //get text of each button in the array
         ButtonScript.upgradeButton[0].GetComponentInChildren<Text>().text = "Sell Tower: " + gameObject.GetComponent<TowerData>().sellRate;
         ButtonScript.upgradeButton[1].GetComponentInChildren<Text>().text = "Upgrade Tower: " + gameObject.GetComponent<TowerData>().upgradeRate;
+  
     }
 
     void Shoot(Collider2D target)
     {
 
-        //Alternat shoot
+        //Alternate shoot
         GameObject bulletPrefab = towerData.projectile;
         // 1 
         Vector3 startPosition = gameObject.transform.position;
@@ -101,16 +108,17 @@ public class Tower : MonoBehaviour {
 
     void Update()
     {
-        if (isSelected == true)
+     
+  if (towerManager.IsSelected(gameObject))
         {
             selectionCircle.gameObject.SetActive(true);
-            canvaStatsPanel.SetActive(true);
 
         }
-        else if (isSelected == false)
+        else
         {
+        
             selectionCircle.gameObject.SetActive(false);
-            canvaStatsPanel.SetActive(false);
+
         }
 
 
