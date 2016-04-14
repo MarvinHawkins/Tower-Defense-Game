@@ -14,28 +14,29 @@ public class Spot : MonoBehaviour {
     public bool isSelected;  // class objects
 
     void Start()
-        {   //set the class objects
-             ButtonScript = GameObject.Find("Canvas/Panel").GetComponent<buttonScript>(); //get a refference to the buttonscript u=in scen
-            towerManager = GameObject.FindGameObjectWithTag("PlayerTowerManager").GetComponent<TowerManager>();
-    }
+            {   //set the class objects
+                 ButtonScript = GameObject.Find("Canvas/Panel").GetComponent<buttonScript>(); //get a refference to the buttonscript u=in scen
+                towerManager = GameObject.FindGameObjectWithTag("PlayerTowerManager").GetComponent<TowerManager>();
+        }
 
     
     void OnMouseUp()
-        {
+      {
             //Check to see if you can place a tower
-            Debug.Log("spot  cicked");
+            Debug.Log("spot  clicked");
 
         //Close the stats panel
         ButtonScript.statPanel.SetActive(false);
         towerManager.DeselectAll();
-
-
         ButtonScript.buildOptionsPanel.SetActive(true);
-        ButtonScript.selectedTower = this.gameObject; //set the tower to be the clicked object
-
-
-
-            
+        ButtonScript.selectedTower = this.gameObject; //set the tower to be the clicked object        
     } 
+
+    void OnMouseOver()
+    {
+        Debug.Log("Hovering!");
+        ButtonScript.tooltipPanel.SetActive(true);  
+
+    }
 
 }

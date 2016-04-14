@@ -34,7 +34,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &488796
 Transform:
   m_ObjectHideFlags: 1
@@ -43,7 +43,7 @@ Transform:
   m_GameObject: {fileID: 182572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.6789234, y: 2.6789234, z: 2.6789234}
+  m_LocalScale: {x: 16.807688, y: 16.80769, z: 16.80769}
   m_Children: []
   m_Father: {fileID: 497334}
   m_RootOrder: 0
@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.11, y: -1.2762235, z: 0}
+  m_LocalPosition: {x: -175.65, y: 246.88, z: 0}
   m_LocalScale: {x: 1.4931371, y: 1.4931371, z: 1.4931371}
   m_Children:
   - {fileID: 488796}
@@ -73,7 +73,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 3, y: 3}
 --- !u!114 &11449666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,6 +89,7 @@ MonoBehaviour:
   cost: 49
   range: 0
   timeSinceLastShot: 0
+  rofList: 0
   fireRate: 0
   sellRate: 100
   upgradeRate: 250
@@ -111,6 +112,10 @@ MonoBehaviour:
   selectionCircle: {fileID: 0}
   isSelected: 0
   statsLabel: {fileID: 0}
+  attackPowerLabel: {fileID: 0}
+  rofLabel: {fileID: 0}
+  enemiesInRange: []
+  muzzle: {fileID: 0}
 --- !u!212 &21202864
 SpriteRenderer:
   m_ObjectHideFlags: 1

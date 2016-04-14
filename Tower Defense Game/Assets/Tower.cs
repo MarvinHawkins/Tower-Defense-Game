@@ -12,6 +12,9 @@ public class Tower : MonoBehaviour {
     public Transform selectionCircle;
     public bool isSelected;
     public Text statsLabel;
+    public Text attackPowerLabel;
+    public Text rofLabel;
+
     private float lastShotTime;
     public List<GameObject> enemiesInRange;
     public Transform muzzle;
@@ -22,6 +25,8 @@ public class Tower : MonoBehaviour {
         ButtonScript = GameObject.Find("Canvas/Panel").GetComponent<buttonScript>(); //get a refference to the buttonscript u=in scen
         canvaStatsPanel = ButtonScript.statPanel; //Should send this unit's stats to the panel
         statsLabel = canvaStatsPanel.GetComponentInChildren<Text>();
+
+
         towerManager = GameObject.FindGameObjectWithTag("PlayerTowerManager").GetComponent<TowerManager>();
         selectionCircle = transform.Find("selectPlane");
         selectionCircle.gameObject.SetActive(false);
@@ -38,6 +43,8 @@ public class Tower : MonoBehaviour {
         enemiesInRange.Remove(enemy);
     }
 
+
+
     void OnTriggerEnter2D(Collider2D other)
     {
         // 2
@@ -47,6 +54,10 @@ public class Tower : MonoBehaviour {
             EnemyDelegateDestruction del =
                 other.gameObject.GetComponent<EnemyDelegateDestruction>();
             del.enemyDelegate += OnEnemyDestroy;
+          if (selectionCircle.gameObject.activeSelf)
+          {
+                selectionCircle.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            }
         }
     }
     // 3
@@ -58,6 +69,13 @@ public class Tower : MonoBehaviour {
             EnemyDelegateDestruction del =
                 other.gameObject.GetComponent<EnemyDelegateDestruction>();
             del.enemyDelegate -= OnEnemyDestroy;
+
+            if (selectionCircle.gameObject.activeSelf)
+            {
+                selectionCircle.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+            }
+
+           
         }
     }
 
@@ -67,7 +85,6 @@ public class Tower : MonoBehaviour {
 
         //set the clicked to true
         // isSelected = true;
-        //replaced by selection manager
          towerManager.selectSingleTower(gameObject);
         //show the towers options
         canvaStatsPanel.SetActive(true);
@@ -76,7 +93,10 @@ public class Tower : MonoBehaviour {
         ButtonScript.currentSpot = gameObject.GetComponentInParent<Spot>().transform;
         //Set the name of the selected tower
         statsLabel.GetComponent<Text>().text = "Tower: " + gameObject.GetComponent<TowerData>().towerName;
-       
+
+
+        ButtonScript.statLabels[1].GetComponentInChildren<Text>().text = "Attack Power: " + gameObject.GetComponent<TowerData>().projectile.GetComponent<BulletBehavior>().damage.ToString();
+        ButtonScript.statLabels[2].GetComponentInChildren<Text>().text = "Rate of Fire: " + gameObject.GetComponent<TowerData>().rofList;
         //get text of each button in the array
         ButtonScript.upgradeButton[0].GetComponentInChildren<Text>().text = "Sell Tower: " + gameObject.GetComponent<TowerData>().sellRate;
         ButtonScript.upgradeButton[1].GetComponentInChildren<Text>().text = "Upgrade Tower: " + gameObject.GetComponent<TowerData>().upgradeRate;

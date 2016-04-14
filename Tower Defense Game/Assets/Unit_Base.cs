@@ -11,16 +11,18 @@ public class Unit_Base : MonoBehaviour {
     private int currentWaypoint = 0;
     private float lastWaypointSwitchTime;
     public float speed = 1.0f;
-
     public int health;
+    public float armor;
+    public enum ResistanceType { Fire, Energy} //May code more of these
     public int victoryPoints;  //amount deducted from player when the creep reaches the end
     public int bounty;   //amount of points the player gets when destroyed
 
    
     public float dropRate;
     public GameObject lootDrop;
-
+    
     public GameManager gameManager;  //Find the game manager class
+
 
     public void Start()
     {

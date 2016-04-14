@@ -91,6 +91,8 @@ MonoBehaviour:
   selectionCircle: {fileID: 0}
   isSelected: 0
   statsLabel: {fileID: 0}
+  attackPowerLabel: {fileID: 0}
+  rofLabel: {fileID: 0}
   enemiesInRange: []
   muzzle: {fileID: 0}
 --- !u!114 &11480024
@@ -104,14 +106,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80f38d6626c0644e93335f337f25dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerName: 
+  towerName: Tower 2
   cost: 0
   range: 0
   timeSinceLastShot: 0
+  rofList: 0
   fireRate: 0
-  sellRate: 0
-  upgradeRate: 0
-  projectile: {fileID: 0}
+  sellRate: 25
+  upgradeRate: 100
+  projectile: {fileID: 160234, guid: 100daf46eb3b8c148b12f84a7a3e9208, type: 2}
   myUpgrade: {fileID: 0}
 --- !u!212 &21216166
 SpriteRenderer:
@@ -204,6 +207,22 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d3ef4827bdccc9e459f6f322c59724c6, type: 2}
+    - target: {fileID: 0}
+      propertyPath: towerName
+      value: Tower 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: sellRate
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upgradeRate
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 160234, guid: 100daf46eb3b8c148b12f84a7a3e9208, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131990}

@@ -22,11 +22,13 @@ public class GroundManager : MonoBehaviour {
 
     void OnMouseUp()
     {
-        if(ButtonScript.selectedTower != null)
+       
+        if (ButtonScript.selectedTower != null)
         {
             Debug.Log("Ground clicked");
             selectManager.DeselectAll();
-            ButtonScript.selectedTower.GetComponent<Tower>().isSelected = false;
+           
+            //ButtonScript.selectedTower.GetComponent<Tower>().isSelected = false;
 
         }
        

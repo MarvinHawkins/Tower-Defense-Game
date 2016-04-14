@@ -117,6 +117,7 @@ MonoBehaviour:
   cost: 100
   range: 200
   timeSinceLastShot: 0
+  rofList: 2
   fireRate: 0.75
   sellRate: 75
   upgradeRate: 150
@@ -139,6 +140,8 @@ MonoBehaviour:
   selectionCircle: {fileID: 0}
   isSelected: 0
   statsLabel: {fileID: 0}
+  attackPowerLabel: {fileID: 0}
+  rofLabel: {fileID: 0}
   enemiesInRange: []
   muzzle: {fileID: 462374}
 --- !u!212 &21221492
@@ -168,7 +171,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.3073281, g: 0.006866356, b: 0.9338235, a: 0.522}
+  m_Color: {r: 0.03883014, g: 0.006866356, b: 0.9338235, a: 0.522}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!212 &21225430
@@ -240,6 +243,22 @@ Prefab:
       propertyPath: range
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.r
+      value: 0.03883014
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.b
+      value: 0.9338235
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rofList
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: buttonTest
+      value: 
+      objectReference: {fileID: 119090, guid: e4e239a314c1ce74b84422e1f1a932ba, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 159892}

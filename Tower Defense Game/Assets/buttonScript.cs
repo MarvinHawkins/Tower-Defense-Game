@@ -14,11 +14,15 @@ public class buttonScript : MonoBehaviour {
     //Classes
     public GameManager gameManager;  //Find the game manager class
     public GameObject statPanel; //hold ref of the panel
+    public GameObject labelParent;
     public GameObject winPanel;
+    public GameObject tooltipPanel; //The panel that opens when the player hovers over an open spot
     public GameObject buildOptionsPanel;
     
     public TowerData towerdata; //Ref of the tower script
     public Button[] upgradeButton;
+    public Text[] statLabels;
+
 
    
 
@@ -27,11 +31,13 @@ public class buttonScript : MonoBehaviour {
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         statPanel = GameObject.FindGameObjectWithTag("Stats");
-       
+        labelParent = GameObject.Find("Canvas/StatsPanel/labels");
         upgradeButton = statPanel.GetComponentsInChildren<Button>();
+        statLabels = labelParent.GetComponentsInChildren<Text>();
         statPanel.SetActive(false);
         winPanel.SetActive(false);
         buildOptionsPanel.SetActive(false);
+        tooltipPanel.SetActive(false);
         towerdata = selectedTower.GetComponentInParent<Spot>().towerPlaced.GetComponent<TowerData>();
     }
 
@@ -135,8 +141,18 @@ public class buttonScript : MonoBehaviour {
         {
             SceneManager.LoadScene(0);
         }
-    
 
-   
+    public void closeBuildPanel()
+    {
+        buildOptionsPanel.SetActive(false);//Close the tower menu
+    }
+
+    public void closeTurretPanel()
+    {
+        statPanel.SetActive(false);//Close the tower menu
+    }
+
+
+
 
 }
