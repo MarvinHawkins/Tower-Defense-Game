@@ -14,11 +14,10 @@ public class Tower : MonoBehaviour {
     public Text statsLabel;
     public Text attackPowerLabel;
     public Text rofLabel;
-
     private float lastShotTime;
     public List<GameObject> enemiesInRange;
     public Transform muzzle;
-
+  
     void Start()
     {   
         //set the class objects
@@ -26,14 +25,13 @@ public class Tower : MonoBehaviour {
         canvaStatsPanel = ButtonScript.statPanel; //Should send this unit's stats to the panel
         statsLabel = canvaStatsPanel.GetComponentInChildren<Text>();
 
-
         towerManager = GameObject.FindGameObjectWithTag("PlayerTowerManager").GetComponent<TowerManager>();
         selectionCircle = transform.Find("selectPlane");
         selectionCircle.gameObject.SetActive(false);
         enemiesInRange = new List<GameObject>(); //Get alist of enemeies in range
-
         lastShotTime = Time.time;
         towerData = gameObject.GetComponentInChildren<TowerData>();
+       
 
     }
 
@@ -47,7 +45,6 @@ public class Tower : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // 2
         if (other.gameObject.tag.Equals("Enemy"))
         {
             enemiesInRange.Add(other.gameObject);
@@ -56,7 +53,10 @@ public class Tower : MonoBehaviour {
             del.enemyDelegate += OnEnemyDestroy;
           if (selectionCircle.gameObject.activeSelf)
           {
-                selectionCircle.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+
+                //Change the alpha to keep it transparent
+                selectionCircle.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, 0.50f); // Set to red trabsparent
+
             }
         }
     }
@@ -72,7 +72,8 @@ public class Tower : MonoBehaviour {
 
             if (selectionCircle.gameObject.activeSelf)
             {
-                selectionCircle.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+         
+                selectionCircle.gameObject.GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 1f, 0.50f); // Set to red trabsparent
             }
 
            
@@ -98,7 +99,7 @@ public class Tower : MonoBehaviour {
         ButtonScript.statLabels[1].GetComponentInChildren<Text>().text = "Attack Power: " + gameObject.GetComponent<TowerData>().projectile.GetComponent<BulletBehavior>().damage.ToString();
         ButtonScript.statLabels[2].GetComponentInChildren<Text>().text = "Rate of Fire: " + gameObject.GetComponent<TowerData>().rofList;
         //get text of each button in the array
-        ButtonScript.upgradeButton[0].GetComponentInChildren<Text>().text = "Sell Tower: " + gameObject.GetComponent<TowerData>().sellRate;
+        ButtonScript.upgradeButton[0].GetComponentInChildren<Text>().text = "Sell Tower: " + gameObject.GetComponent<TowerData>().sellRate; //%16 Update this
         ButtonScript.upgradeButton[1].GetComponentInChildren<Text>().text = "Upgrade Tower: " + gameObject.GetComponent<TowerData>().upgradeRate;
   
     }

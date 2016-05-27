@@ -70,7 +70,10 @@ public class buttonScript : MonoBehaviour {
                 gameManager.towerScore += towers[tower].GetComponent<TowerData>().sellRate;
                 buildOptionsPanel.SetActive(false);//Close the tower menu
                 selectedTower.GetComponent<BoxCollider2D>().enabled = false;
-
+                //Close tooltip panel
+               // tooltipPanel.GetComponent<Text>().text = "";
+                tooltipPanel.SetActive(false);
+                
             }         
         }
         else
@@ -96,10 +99,11 @@ public class buttonScript : MonoBehaviour {
                 //Return a certain amount of money to the player
                 gameManager.Money += selectedTower.GetComponentInParent<Spot>().towerPlaced.GetComponent<TowerData>().sellRate; //Sell the tower for the same cost
                 //Destroy the tower
-                Debug.Log("Destroy this object");
+                //Debug.Log("Destroy this object");
                 statPanel.SetActive(false);//Close the tower menu
                 selectedTower.GetComponentInParent<Spot>().GetComponent<BoxCollider2D>().enabled = true; //turn the spots collider back on
                 Destroy(selectedTower.GetComponentInParent<Spot>().towerPlaced);   //Delete the old tower
+                tooltipPanel.SetActive(false);
 
         }
 

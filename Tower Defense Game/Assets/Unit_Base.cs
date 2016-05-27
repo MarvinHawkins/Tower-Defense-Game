@@ -75,8 +75,6 @@ public class Unit_Base : MonoBehaviour {
 
     public void Update()
     {
-
-     
         Vector3 startPosition = waypoints[currentWaypoint].transform.position;
         Vector3 endPosition = waypoints[currentWaypoint + 1].transform.position;
         // 

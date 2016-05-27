@@ -29,8 +29,8 @@ public class SpawnEnemy : MonoBehaviour {
     public void Update()
     {
 
-        int currentWave = gameManager.Wave;
-        //Check to make sure enemies are left
+           int currentWave = gameManager.Wave;
+                //Check to make sure enemies are left
             if (currentWave < waves.Length)
             {
                 // 2
@@ -40,9 +40,11 @@ public class SpawnEnemy : MonoBehaviour {
                      timeInterval > spawnInterval) &&
                     enemiesSpawned < waves[currentWave].maxEnemies)
                 {
-             
+              
                 lastSpawnTime = Time.time;
-                  GameObject newEnemy = (GameObject)Instantiate(waves[currentWave].enemyPrefab[Random.Range(0,waves[currentWave].enemyPrefab.Length)]); //Spawn a random enemy
+                  Vector3 startPos = GameObject.Find("Waypoint0").GetComponent<Transform>().position;  //Get the position of the first spawn point in the level
+                            
+                  GameObject newEnemy = (GameObject)Instantiate(waves[currentWave].enemyPrefab[Random.Range(0,waves[currentWave].enemyPrefab.Length)], startPos, Quaternion.identity); //Spawn a random enemy
                   newEnemy.GetComponent<Unit_Base>().waypoints = waves[currentWave].waypoints;
                   enemiesSpawned++;
 
