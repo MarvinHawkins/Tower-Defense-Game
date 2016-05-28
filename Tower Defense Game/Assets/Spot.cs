@@ -52,6 +52,7 @@ public class Spot : MonoBehaviour {
     void testButton()
     {
         Debug.Log("I work");
+        ButtonScript.buildTower(0);
     }
 
 }

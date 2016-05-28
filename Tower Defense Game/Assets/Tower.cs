@@ -133,7 +133,7 @@ public class Tower : MonoBehaviour {
   if (towerManager.IsSelected(gameObject))
         {
             selectionCircle.gameObject.SetActive(true);
-
+ 
         }
         else
         {
@@ -165,10 +165,12 @@ public class Tower : MonoBehaviour {
                 Shoot(target.GetComponent<Collider2D>());
                 lastShotTime = Time.time;
             }
+
+        
             // 3
             Vector3 direction = gameObject.transform.position - target.transform.position;
             gameObject.transform.rotation = Quaternion.AngleAxis(
-                Mathf.Atan2(direction.y, direction.x) * 180 / Mathf.PI,
+                Mathf.Atan2(direction.y, direction.x) *  180, //  / Mathf.PI,
                 new Vector3(0, 0, 1));
         }
 
